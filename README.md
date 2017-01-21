@@ -1,22 +1,59 @@
-# Mqueue (Go)
+# mqueue (Go)
 
-In-memory message broker in Go over an HTTP API using 
-concurrent, thread-safe publisher/subscriber architecture
-with multiple topics. 
+In-memory message broker in Go over an HTTP API using a concurrent, thread-safe publisher/subscriber architecture with multiple topics. 
 
-## Subscribe
+## Installation
+
+```sh
+$ go get github.com/ridwanmsharif/mqueue
+$ cd $GOPATH/src/github.com/ridwanmsharif/mqueue/
+$ go build -o mqueue
+$ ./mqueue
+```
+Listening on `:8081`, ready for client/terminal use.
+
+## Examples/Usage
+
+**Subscriber (client library)**
+```go
+
+  ch, err := client.Subscribe("topic_of_your_choice")
+  if err != nil {
+    log.Println(err)
+    return
+  }
+
+  for e := range ch {
+    log.Println(string(e))
+  }
+
+  log.Println("Channel closed")
+
+```
+
+**Publisher (client library)**
+```go
+
+  err := client.Publish("topic_of_your_choice", []byte("Arbitrary Message"))
+  if err != nil {
+      log.Println(err)
+  }
+
+```
+
+**Subscriber (command line)**
 ```sh
 curl -k -i -N -H "Connection: Upgrade" \
     -H "Upgrade: websocket" \
-        -H "Host: localhost:8081" \
-            -H "Origin:http://localhost:8081" \
-                -H "Sec-Websocket-Version: 13" \
-                    -H "Sec-Websocket-Key: MQ" \
-                        "https://localhost:8081/sub?topic=
-                        topic_of_your_choice"
+    -H "Host: localhost:8081" \
+    -H "Origin:http://localhost:8081" \
+    -H "Sec-Websocket-Version: 13" \
+    -H "Sec-Websocket-Key: MQ" \
+    "https://localhost:8081/sub?topic=
+    topic_of_your_choice"
 ```
 
-## Publish 
+**Publisher (command line)** 
 ```sh 
 curl -d "Any message you wish to post""http://localhost:8081/pub?topic=topic_of_your_choice"
 ```
