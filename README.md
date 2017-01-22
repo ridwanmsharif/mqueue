@@ -60,7 +60,8 @@ curl -d "Any message you wish to post""http://localhost:8081/pub?topic=topic_of_
 
 ## Disclaimer
 
-Purely experimental project. Designed for learning purposes not production use.
+Purely experimental project. Designed for learning purposes not production use. 
+This weas my first project in Go, the implementation here is largely based on [asim/mq](https://www.github.com/asim/mq), I'm tracking his incremental progress and repeating the same
 
 ## Contributing
 
@@ -68,7 +69,7 @@ Bug reports and pull requests are welcome on GitHub at [@ridwanmsharif](https://
 
 ## Author
 
-Ridwan M. Sharif:[ E-mail](ridwanmsharif@hotmail.com), [@ridwanmsharif](https://www.github.com/ridwanmsharif)
+Ridwan M. Sharif:[ E-mail](mailto:ridwanmsharif@hotmail.com), [@ridwanmsharif](https://www.github.com/ridwanmsharif)
 
 ## License
 
